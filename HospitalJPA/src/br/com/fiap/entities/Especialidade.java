@@ -1,0 +1,7 @@
+package br.com.fiap.entities;
+
+public enum Especialidade {
+	
+	OTORRINOLARINGOLOGIA, OFTALMOLOGIA, CARDIOLOGIA, NEUROLOGIA, ONCOLOGIA, PSIQUIATRIA, GERAL
+
+}
