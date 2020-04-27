@@ -1,5 +1,8 @@
 package br.com.fiap.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +33,15 @@ public class Hospital {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "nr_cep", nullable = false)
 	private Endereco endereco;
+	
+	@OneToMany(mappedBy = "hospital", cascade = CascadeType.PERSIST)
+	private List<Funcionario> funcionario = new ArrayList<Funcionario>(); 
+	
+	public void addFunc(Funcionario func) {
+		funcionario.add(func);
+		func.setHospital(this);
+	}
+	
 
 	public Hospital() {}
 
